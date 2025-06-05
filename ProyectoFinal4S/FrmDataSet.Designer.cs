@@ -43,6 +43,8 @@
             groupBox2 = new GroupBox();
             btnGraphics = new Button();
             formsPlot1 = new ScottPlot.WinForms.FormsPlot();
+            formsPlot2 = new ScottPlot.WinForms.FormsPlot();
+            btnScatterPlot = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -66,7 +68,7 @@
             dgvData.Location = new Point(424, 83);
             dgvData.Name = "dgvData";
             dgvData.RowHeadersWidth = 62;
-            dgvData.Size = new Size(772, 324);
+            dgvData.Size = new Size(772, 273);
             dgvData.TabIndex = 5;
             // 
             // cmbDeleteType
@@ -118,7 +120,7 @@
             // 
             cmbExportFormat.Font = new Font("Yu Gothic UI", 11.25F);
             cmbExportFormat.FormattingEnabled = true;
-            cmbExportFormat.Location = new Point(424, 428);
+            cmbExportFormat.Location = new Point(941, 433);
             cmbExportFormat.Margin = new Padding(2);
             cmbExportFormat.Name = "cmbExportFormat";
             cmbExportFormat.Size = new Size(102, 28);
@@ -127,7 +129,7 @@
             // btnExport
             // 
             btnExport.Font = new Font("Yu Gothic UI", 11.25F);
-            btnExport.Location = new Point(555, 423);
+            btnExport.Location = new Point(1094, 428);
             btnExport.Margin = new Padding(2);
             btnExport.Name = "btnExport";
             btnExport.Size = new Size(102, 37);
@@ -194,7 +196,7 @@
             // btnGraphics
             // 
             btnGraphics.Font = new Font("Yu Gothic UI", 11.25F);
-            btnGraphics.Location = new Point(162, 370);
+            btnGraphics.Location = new Point(162, 393);
             btnGraphics.Margin = new Padding(2);
             btnGraphics.Name = "btnGraphics";
             btnGraphics.Size = new Size(102, 37);
@@ -206,10 +208,30 @@
             // formsPlot1
             // 
             formsPlot1.DisplayScale = 1F;
-            formsPlot1.Location = new Point(67, 428);
+            formsPlot1.Location = new Point(67, 454);
             formsPlot1.Name = "formsPlot1";
-            formsPlot1.Size = new Size(313, 204);
+            formsPlot1.Size = new Size(295, 211);
             formsPlot1.TabIndex = 24;
+            // 
+            // formsPlot2
+            // 
+            formsPlot2.DisplayScale = 1F;
+            formsPlot2.Location = new Point(424, 454);
+            formsPlot2.Name = "formsPlot2";
+            formsPlot2.Size = new Size(485, 211);
+            formsPlot2.TabIndex = 25;
+            // 
+            // btnScatterPlot
+            // 
+            btnScatterPlot.Font = new Font("Yu Gothic UI", 11.25F);
+            btnScatterPlot.Location = new Point(564, 393);
+            btnScatterPlot.Margin = new Padding(2);
+            btnScatterPlot.Name = "btnScatterPlot";
+            btnScatterPlot.Size = new Size(102, 37);
+            btnScatterPlot.TabIndex = 26;
+            btnScatterPlot.Text = "Scatter";
+            btnScatterPlot.UseVisualStyleBackColor = true;
+            btnScatterPlot.Click += btnScatterPlot_Click;
             // 
             // FrmDataSet
             // 
@@ -217,6 +239,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(1264, 727);
+            Controls.Add(btnScatterPlot);
+            Controls.Add(formsPlot2);
             Controls.Add(formsPlot1);
             Controls.Add(btnGraphics);
             Controls.Add(groupBox2);
@@ -252,5 +276,7 @@
         private GroupBox groupBox2;
         private Button btnGraphics;
         private ScottPlot.WinForms.FormsPlot formsPlot1;
+        private ScottPlot.WinForms.FormsPlot formsPlot2;
+        private Button btnScatterPlot;
     }
 }

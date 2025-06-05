@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Diagnostics;
 using LiveCharts.Definitions.Charts;
+using ScottPlot;
 
 
 namespace ProyectoFinal4S
@@ -470,6 +471,58 @@ namespace ProyectoFinal4S
             plt.HideGrid();
 
             formsPlot1.Refresh();
+        }
+
+        private void btnScatterPlot_Click(object sender, EventArgs e)
+        {
+            if (allRows.Count == 0)
+            {
+                MessageBox.Show("No hay datos cargados.");
+                return;
+            }
+
+            try
+            {
+                List<double> raList = new List<double>();
+                List<double> decList = new List<double>();
+                int count = 0;
+
+                foreach (var fila in allRows)
+                {
+                    if (fila.Length > 13 && fila[13].Trim().ToUpper() == "STAR")
+                    {
+                        if (double.TryParse(fila[1], out double ra) &&
+                            double.TryParse(fila[2], out double dec))
+                        {
+                            raList.Add(ra);
+                            decList.Add(dec);
+                            count++;
+                        }
+
+                        if (count >= 1000)
+                            break;
+                    }
+                }
+
+                var plt = formsPlot2.Plot;
+                plt.Clear();
+
+                var scatter = plt.Add.ScatterPoints(raList.ToArray(), decList.ToArray());
+                scatter.MarkerSize = 5;
+                scatter.Color = Colors.Blue;
+                scatter.MarkerShape = MarkerShape.FilledCircle;
+
+                plt.Title("Primeras 1000 Estrellas (RA vs DEC)");
+                plt.XLabel("Ascensión Recta (ra)");
+                plt.YLabel("Declinación (dec)");
+
+                plt.Axes.SetLimits(0, 360, -90, 90);
+                formsPlot2.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al graficar estrellas: " + ex.Message);
+            }
         }
 
 
