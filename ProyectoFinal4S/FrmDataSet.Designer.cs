@@ -53,7 +53,7 @@
             // btnOpen
             // 
             btnOpen.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnOpen.Location = new Point(31, 37);
+            btnOpen.Location = new Point(31, 22);
             btnOpen.Name = "btnOpen";
             btnOpen.Size = new Size(102, 36);
             btnOpen.TabIndex = 1;
@@ -68,14 +68,14 @@
             dgvData.Location = new Point(424, 83);
             dgvData.Name = "dgvData";
             dgvData.RowHeadersWidth = 62;
-            dgvData.Size = new Size(772, 273);
+            dgvData.Size = new Size(772, 215);
             dgvData.TabIndex = 5;
             // 
             // cmbDeleteType
             // 
             cmbDeleteType.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbDeleteType.FormattingEnabled = true;
-            cmbDeleteType.Location = new Point(95, 33);
+            cmbDeleteType.Location = new Point(95, 21);
             cmbDeleteType.Margin = new Padding(2);
             cmbDeleteType.Name = "cmbDeleteType";
             cmbDeleteType.Size = new Size(116, 28);
@@ -84,7 +84,7 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(31, 91);
+            btnDelete.Location = new Point(31, 67);
             btnDelete.Margin = new Padding(2);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(102, 37);
@@ -96,7 +96,7 @@
             // btnClearData
             // 
             btnClearData.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnClearData.Location = new Point(173, 91);
+            btnClearData.Location = new Point(173, 67);
             btnClearData.Margin = new Padding(2);
             btnClearData.Name = "btnClearData";
             btnClearData.Size = new Size(102, 37);
@@ -108,7 +108,7 @@
             // btnSave
             // 
             btnSave.Font = new Font("Yu Gothic UI", 11.25F);
-            btnSave.Location = new Point(173, 38);
+            btnSave.Location = new Point(173, 23);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(102, 36);
             btnSave.TabIndex = 15;
@@ -120,7 +120,7 @@
             // 
             cmbExportFormat.Font = new Font("Yu Gothic UI", 11.25F);
             cmbExportFormat.FormattingEnabled = true;
-            cmbExportFormat.Location = new Point(941, 433);
+            cmbExportFormat.Location = new Point(955, 318);
             cmbExportFormat.Margin = new Padding(2);
             cmbExportFormat.Name = "cmbExportFormat";
             cmbExportFormat.Size = new Size(102, 28);
@@ -129,7 +129,7 @@
             // btnExport
             // 
             btnExport.Font = new Font("Yu Gothic UI", 11.25F);
-            btnExport.Location = new Point(1094, 428);
+            btnExport.Location = new Point(1094, 313);
             btnExport.Margin = new Padding(2);
             btnExport.Name = "btnExport";
             btnExport.Size = new Size(102, 37);
@@ -166,9 +166,9 @@
             groupBox1.Controls.Add(cmbDeleteType);
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnClearData);
-            groupBox1.Location = new Point(67, 201);
+            groupBox1.Location = new Point(67, 173);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(313, 155);
+            groupBox1.Size = new Size(313, 125);
             groupBox1.TabIndex = 20;
             groupBox1.TabStop = false;
             // 
@@ -189,14 +189,14 @@
             groupBox2.Controls.Add(btnSave);
             groupBox2.Location = new Point(67, 83);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(313, 100);
+            groupBox2.Size = new Size(313, 84);
             groupBox2.TabIndex = 22;
             groupBox2.TabStop = false;
             // 
             // btnGraphics
             // 
             btnGraphics.Font = new Font("Yu Gothic UI", 11.25F);
-            btnGraphics.Location = new Point(162, 393);
+            btnGraphics.Location = new Point(162, 327);
             btnGraphics.Margin = new Padding(2);
             btnGraphics.Name = "btnGraphics";
             btnGraphics.Size = new Size(102, 37);
@@ -208,7 +208,7 @@
             // formsPlot1
             // 
             formsPlot1.DisplayScale = 1F;
-            formsPlot1.Location = new Point(67, 454);
+            formsPlot1.Location = new Point(67, 380);
             formsPlot1.Name = "formsPlot1";
             formsPlot1.Size = new Size(295, 211);
             formsPlot1.TabIndex = 24;
@@ -216,7 +216,7 @@
             // formsPlot2
             // 
             formsPlot2.DisplayScale = 1F;
-            formsPlot2.Location = new Point(424, 454);
+            formsPlot2.Location = new Point(415, 380);
             formsPlot2.Name = "formsPlot2";
             formsPlot2.Size = new Size(485, 211);
             formsPlot2.TabIndex = 25;
@@ -224,7 +224,7 @@
             // btnScatterPlot
             // 
             btnScatterPlot.Font = new Font("Yu Gothic UI", 11.25F);
-            btnScatterPlot.Location = new Point(564, 393);
+            btnScatterPlot.Location = new Point(615, 327);
             btnScatterPlot.Margin = new Padding(2);
             btnScatterPlot.Name = "btnScatterPlot";
             btnScatterPlot.Size = new Size(102, 37);
