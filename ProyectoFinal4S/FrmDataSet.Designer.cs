@@ -45,6 +45,7 @@
             formsPlot1 = new ScottPlot.WinForms.FormsPlot();
             formsPlot2 = new ScottPlot.WinForms.FormsPlot();
             btnScatterPlot = new Button();
+            btnExportPDF = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -120,7 +121,7 @@
             // 
             cmbExportFormat.Font = new Font("Yu Gothic UI", 11.25F);
             cmbExportFormat.FormattingEnabled = true;
-            cmbExportFormat.Location = new Point(955, 318);
+            cmbExportFormat.Location = new Point(837, 318);
             cmbExportFormat.Margin = new Padding(2);
             cmbExportFormat.Name = "cmbExportFormat";
             cmbExportFormat.Size = new Size(102, 28);
@@ -129,7 +130,7 @@
             // btnExport
             // 
             btnExport.Font = new Font("Yu Gothic UI", 11.25F);
-            btnExport.Location = new Point(1094, 313);
+            btnExport.Location = new Point(966, 313);
             btnExport.Margin = new Padding(2);
             btnExport.Name = "btnExport";
             btnExport.Size = new Size(102, 37);
@@ -233,12 +234,25 @@
             btnScatterPlot.UseVisualStyleBackColor = true;
             btnScatterPlot.Click += btnScatterPlot_Click;
             // 
+            // btnExportPDF
+            // 
+            btnExportPDF.Font = new Font("Yu Gothic UI", 11.25F);
+            btnExportPDF.Location = new Point(1094, 313);
+            btnExportPDF.Margin = new Padding(2);
+            btnExportPDF.Name = "btnExportPDF";
+            btnExportPDF.Size = new Size(102, 37);
+            btnExportPDF.TabIndex = 27;
+            btnExportPDF.Text = "Export PDF";
+            btnExportPDF.UseVisualStyleBackColor = true;
+            btnExportPDF.Click += btnExportPDF_Click;
+            // 
             // FrmDataSet
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(1264, 727);
+            Controls.Add(btnExportPDF);
             Controls.Add(btnScatterPlot);
             Controls.Add(formsPlot2);
             Controls.Add(formsPlot1);
@@ -278,5 +292,6 @@
         private ScottPlot.WinForms.FormsPlot formsPlot1;
         private ScottPlot.WinForms.FormsPlot formsPlot2;
         private Button btnScatterPlot;
+        private Button btnExportPDF;
     }
 }

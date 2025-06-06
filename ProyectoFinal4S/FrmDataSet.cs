@@ -12,7 +12,14 @@ using System.Xml.Linq;
 using System.Diagnostics;
 using LiveCharts.Definitions.Charts;
 using ScottPlot;
-
+using QuestPDF.Infrastructure;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using QuestPDF.Drawing;
+using QuestPDF.Elements;
+using ScottPlotColors = ScottPlot.Colors;
+using PdfColors = QuestPDF.Helpers.Colors;
 
 namespace ProyectoFinal4S
 {
@@ -509,7 +516,7 @@ namespace ProyectoFinal4S
 
                 var scatter = plt.Add.ScatterPoints(raList.ToArray(), decList.ToArray());
                 scatter.MarkerSize = 5;
-                scatter.Color = Colors.Blue;
+                scatter.Color = ScottPlot.Colors.Blue;
                 scatter.MarkerShape = MarkerShape.FilledCircle;
 
                 plt.Title("Primeras 1000 Estrellas (RA vs DEC)");
@@ -524,6 +531,108 @@ namespace ProyectoFinal4S
                 MessageBox.Show("Error al graficar estrellas: " + ex.Message);
             }
         }
+
+        private void btnExportPDF_Click(object sender, EventArgs e)
+        {
+            if (dgvData.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.");
+                return;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.Title = "Guardar como PDF";
+            saveFileDialog.FileName = "export.pdf";
+
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            string ruta = saveFileDialog.FileName;
+
+            try
+            {
+                var headers = dgvData.Columns.Cast<DataGridViewColumn>()
+                                .Select(c => c.HeaderText)
+                                .ToList();
+
+                var rows = new List<List<string>>();
+
+                foreach (DataGridViewRow row in dgvData.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        var cells = row.Cells.Cast<DataGridViewCell>()
+                            .Select(cell => cell.Value?.ToString() ?? "")
+                            .ToList();
+
+                        rows.Add(cells);
+                    }
+                }
+
+                QuestPDF.Settings.License = LicenseType.Community;
+
+                var document = Document.Create(container =>
+                {
+                    container.Page(page =>
+                    {
+                        page.Margin(30);
+                        page.Size(PageSizes.A4);
+                        page.PageColor(QuestPDF.Helpers.Colors.White);
+                        page.DefaultTextStyle(x => x.FontSize(10));
+
+                        page.Content().Table(table =>
+                        {
+                            // Columnas
+                            for (int i = 0; i < headers.Count; i++)
+                            {
+                                table.ColumnsDefinition(columns =>
+                                {
+                                    for (int j = 0; j < headers.Count; j++)
+                                        columns.RelativeColumn();
+                                });
+
+                                break;
+                            }
+
+                            // Encabezados
+                            table.Header(header =>
+                            {
+                                foreach (var headerText in headers)
+                                {
+                                    header.Cell().Background(QuestPDF.Helpers.Colors.Grey.Lighten2).Padding(5)
+    .Text(headerText).SemiBold().FontColor(QuestPDF.Helpers.Colors.Blue.Darken2);
+                                }
+                            });
+
+                            // Celdas de datos
+                            foreach (var row in rows)
+                            {
+                                table.Cell().Row(rowIndex =>
+                                {
+                                    for (int i = 0; i < headers.Count && i < row.Count; i++)
+                                    {
+                                        table.Cell().Padding(5).Text(row[i]);
+                                    }
+                                });
+                            }
+                        });
+                    });
+                });
+
+                document.GeneratePdf(ruta);
+                MessageBox.Show("PDF exportado correctamente.");
+                Process.Start(new ProcessStartInfo() { FileName = ruta, UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error exportando a PDF: " + ex.Message);
+            }
+
+        }
+
+
+
 
 
     }
