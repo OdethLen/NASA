@@ -46,6 +46,8 @@
             formsPlot2 = new ScottPlot.WinForms.FormsPlot();
             btnScatterPlot = new Button();
             btnExportPDF = new Button();
+            txtSearch = new TextBox();
+            btnSearch = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -66,7 +68,7 @@
             // 
             dgvData.BackgroundColor = SystemColors.ControlLight;
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(424, 83);
+            dgvData.Location = new Point(424, 117);
             dgvData.Name = "dgvData";
             dgvData.RowHeadersWidth = 62;
             dgvData.Size = new Size(772, 215);
@@ -121,7 +123,7 @@
             // 
             cmbExportFormat.Font = new Font("Yu Gothic UI", 11.25F);
             cmbExportFormat.FormattingEnabled = true;
-            cmbExportFormat.Location = new Point(837, 318);
+            cmbExportFormat.Location = new Point(833, 360);
             cmbExportFormat.Margin = new Padding(2);
             cmbExportFormat.Name = "cmbExportFormat";
             cmbExportFormat.Size = new Size(102, 28);
@@ -130,7 +132,7 @@
             // btnExport
             // 
             btnExport.Font = new Font("Yu Gothic UI", 11.25F);
-            btnExport.Location = new Point(966, 313);
+            btnExport.Location = new Point(967, 355);
             btnExport.Margin = new Padding(2);
             btnExport.Name = "btnExport";
             btnExport.Size = new Size(102, 37);
@@ -143,7 +145,7 @@
             // 
             cmbClassFilter.Font = new Font("Yu Gothic UI", 11.25F);
             cmbClassFilter.FormattingEnabled = true;
-            cmbClassFilter.Location = new Point(588, 28);
+            cmbClassFilter.Location = new Point(862, 60);
             cmbClassFilter.Margin = new Padding(2);
             cmbClassFilter.Name = "cmbClassFilter";
             cmbClassFilter.Size = new Size(129, 28);
@@ -153,7 +155,7 @@
             // btnFilterClass
             // 
             btnFilterClass.Font = new Font("Yu Gothic UI", 11.25F);
-            btnFilterClass.Location = new Point(737, 23);
+            btnFilterClass.Location = new Point(1016, 55);
             btnFilterClass.Margin = new Padding(2);
             btnFilterClass.Name = "btnFilterClass";
             btnFilterClass.Size = new Size(102, 37);
@@ -167,7 +169,7 @@
             groupBox1.Controls.Add(cmbDeleteType);
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnClearData);
-            groupBox1.Location = new Point(67, 173);
+            groupBox1.Location = new Point(67, 207);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(313, 125);
             groupBox1.TabIndex = 20;
@@ -188,7 +190,7 @@
             // 
             groupBox2.Controls.Add(btnOpen);
             groupBox2.Controls.Add(btnSave);
-            groupBox2.Location = new Point(67, 83);
+            groupBox2.Location = new Point(67, 117);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(313, 84);
             groupBox2.TabIndex = 22;
@@ -197,7 +199,7 @@
             // btnGraphics
             // 
             btnGraphics.Font = new Font("Yu Gothic UI", 11.25F);
-            btnGraphics.Location = new Point(162, 327);
+            btnGraphics.Location = new Point(162, 360);
             btnGraphics.Margin = new Padding(2);
             btnGraphics.Name = "btnGraphics";
             btnGraphics.Size = new Size(102, 37);
@@ -209,7 +211,7 @@
             // formsPlot1
             // 
             formsPlot1.DisplayScale = 1F;
-            formsPlot1.Location = new Point(67, 380);
+            formsPlot1.Location = new Point(67, 418);
             formsPlot1.Name = "formsPlot1";
             formsPlot1.Size = new Size(295, 211);
             formsPlot1.TabIndex = 24;
@@ -217,7 +219,7 @@
             // formsPlot2
             // 
             formsPlot2.DisplayScale = 1F;
-            formsPlot2.Location = new Point(415, 380);
+            formsPlot2.Location = new Point(424, 418);
             formsPlot2.Name = "formsPlot2";
             formsPlot2.Size = new Size(485, 211);
             formsPlot2.TabIndex = 25;
@@ -225,7 +227,7 @@
             // btnScatterPlot
             // 
             btnScatterPlot.Font = new Font("Yu Gothic UI", 11.25F);
-            btnScatterPlot.Location = new Point(615, 327);
+            btnScatterPlot.Location = new Point(615, 360);
             btnScatterPlot.Margin = new Padding(2);
             btnScatterPlot.Name = "btnScatterPlot";
             btnScatterPlot.Size = new Size(102, 37);
@@ -237,7 +239,7 @@
             // btnExportPDF
             // 
             btnExportPDF.Font = new Font("Yu Gothic UI", 11.25F);
-            btnExportPDF.Location = new Point(1094, 313);
+            btnExportPDF.Location = new Point(1094, 351);
             btnExportPDF.Margin = new Padding(2);
             btnExportPDF.Name = "btnExportPDF";
             btnExportPDF.Size = new Size(102, 37);
@@ -246,12 +248,33 @@
             btnExportPDF.UseVisualStyleBackColor = true;
             btnExportPDF.Click += btnExportPDF_Click;
             // 
+            // txtSearch
+            // 
+            txtSearch.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(424, 61);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(267, 27);
+            txtSearch.TabIndex = 28;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Font = new Font("Yu Gothic UI", 12F);
+            btnSearch.Location = new Point(708, 54);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(105, 37);
+            btnSearch.TabIndex = 29;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
             // FrmDataSet
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(1264, 727);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearch);
             Controls.Add(btnExportPDF);
             Controls.Add(btnScatterPlot);
             Controls.Add(formsPlot2);
@@ -272,6 +295,7 @@
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -293,5 +317,7 @@
         private ScottPlot.WinForms.FormsPlot formsPlot2;
         private Button btnScatterPlot;
         private Button btnExportPDF;
+        private TextBox txtSearch;
+        private Button btnSearch;
     }
 }

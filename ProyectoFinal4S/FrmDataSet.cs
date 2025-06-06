@@ -632,8 +632,29 @@ namespace ProyectoFinal4S
 
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string texto = txtSearch.Text.Trim().ToLower();
+            int coincidencias = 0;
 
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null && cell.Value.ToString().ToLower().Contains(texto))
+                    {
+                        cell.Style.BackColor = System.Drawing.Color.LightPink;
+                        coincidencias++;
+                    }
+                    else
+                    {
+                        cell.Style.BackColor = System.Drawing.Color.White;
+                    }
+                }
+            }
 
+            MessageBox.Show($"{coincidencias} coincidencias encontradas.");
+        }
 
 
     }
