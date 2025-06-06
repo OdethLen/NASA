@@ -89,6 +89,7 @@ namespace ProyectoFinal4S
                     }
 
                     DisplayRows(allRows);
+                    CountData();
                 }
             }
             catch (Exception ex)
@@ -141,6 +142,7 @@ namespace ProyectoFinal4S
             ).ToList();
 
             DisplayRows(filasFiltradas);
+            CountData();
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -354,6 +356,7 @@ namespace ProyectoFinal4S
                 if (confirm == DialogResult.Yes)
                 {
                     dgvData.Rows.RemoveAt(rowIndex);
+                    CountData();
                     if (rowIndex < allRows.Count)
                         allRows.RemoveAt(rowIndex);
                 }
@@ -656,6 +659,73 @@ namespace ProyectoFinal4S
             MessageBox.Show($"{coincidencias} coincidencias encontradas.");
         }
 
+        private void btnRedshift_Click(object sender, EventArgs e)
+        {
+            // Buscar índice de la columna "redshift"
+            int indexRedshift = -1;
 
+            foreach (DataGridViewColumn col in dgvData.Columns)
+            {
+                if (col.HeaderText.Equals("redshift", StringComparison.OrdinalIgnoreCase))
+                {
+                    indexRedshift = col.Index;
+                    break;
+                }
+            }
+
+            if (indexRedshift == -1)
+            {
+                MessageBox.Show("No se encontró la columna 'redshift'.");
+                return;
+            }
+
+            // Ordenar
+            List<string[]> filasOrdenadas;
+
+            if (rbClose.Checked)
+            {
+                filasOrdenadas = allRows
+                    .Where(row => row.Length > indexRedshift && double.TryParse(row[indexRedshift], out _))
+                    .OrderBy(row => double.Parse(row[indexRedshift]))
+                    .ToList();
+
+                MessageBox.Show("Sorted by closest objects (low redshift).");
+            }
+            else if (rbDistant.Checked)
+            {
+                filasOrdenadas = allRows
+                    .Where(row => row.Length > indexRedshift && double.TryParse(row[indexRedshift], out _))
+                    .OrderByDescending(row => double.Parse(row[indexRedshift]))
+                    .ToList();
+
+                MessageBox.Show("Sorted by most distant objects (high redshift).");
+            }
+            else
+            {
+                MessageBox.Show("Select an order option: Near or Far.");
+                return;
+            }
+
+            // Mostrar resultado en el DataGridView
+            DisplayRows(filasOrdenadas);
+            CountData();
+        }
+
+
+        private void CountData()
+        {
+            int total = dgvData.Rows.Cast<DataGridViewRow>().Count(r => !r.IsNewRow);
+            lblData.Text = $"Data: {total}";
+        }
+
+        private void rbClose_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
