@@ -579,50 +579,51 @@ namespace ProyectoFinal4S
                         page.Margin(30);
                         page.Size(PageSizes.A4);
                         page.PageColor(QuestPDF.Helpers.Colors.White);
-                        page.DefaultTextStyle(x => x.FontSize(10));
+                        page.DefaultTextStyle(x => x.FontSize(9));
 
                         page.Content().Table(table =>
                         {
-                            // Columnas
-                            for (int i = 0; i < headers.Count; i++)
+                            // Definir columnas
+                            table.ColumnsDefinition(columns =>
                             {
-                                table.ColumnsDefinition(columns =>
-                                {
-                                    for (int j = 0; j < headers.Count; j++)
-                                        columns.RelativeColumn();
-                                });
-
-                                break;
-                            }
+                                for (int i = 0; i < headers.Count; i++)
+                                    columns.RelativeColumn();
+                            });
 
                             // Encabezados
                             table.Header(header =>
                             {
                                 foreach (var headerText in headers)
                                 {
-                                    header.Cell().Background(QuestPDF.Helpers.Colors.Grey.Lighten2).Padding(5)
-    .Text(headerText).SemiBold().FontColor(QuestPDF.Helpers.Colors.Blue.Darken2);
+                                    header.Cell()
+                                          .Background(QuestPDF.Helpers.Colors.Grey.Lighten2)
+                                          .Padding(5)
+                                          .Text(headerText)
+                                          .SemiBold()
+                                          .FontColor(QuestPDF.Helpers.Colors.Blue.Darken2);
                                 }
                             });
 
                             // Celdas de datos
                             foreach (var row in rows)
                             {
-                                table.Cell().Row(rowIndex =>
+                                foreach (var cell in row)
                                 {
-                                    for (int i = 0; i < headers.Count && i < row.Count; i++)
-                                    {
-                                        table.Cell().Padding(5).Text(row[i]);
-                                    }
-                                });
+                                    table.Cell().Padding(5).Text(cell);
+                                }
                             }
                         });
                     });
                 });
 
                 document.GeneratePdf(ruta);
+
                 MessageBox.Show("PDF exportado correctamente.");
-                Process.Start(new ProcessStartInfo() { FileName = ruta, UseShellExecute = true });
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = ruta,
+                    UseShellExecute = true
+                });
             }
             catch (Exception ex)
             {
